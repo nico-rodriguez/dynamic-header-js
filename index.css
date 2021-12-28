@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+
+/* Variables */
+:root {
+	--mint: #5ae8d5;
+	--chocolate: #573e31;
+	--raspberry: #f2308e;
+	--vanilla: #faf2c8;
+	
+	--headerText: var(--vanilla);
+	--headerBg: var(--raspberry);
+}
+
+
+/* Reset and boilerplate stuff */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	margin: 0;
+	background: var(--vanilla);
+	color: var(--chocolate);
+	line-height: 1.6;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+svg {
+	width: 100%;
+	height: auto;
+	fill: currentColor;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+h1 {
+	line-height: 1.2;
+}
+
+@media (min-width: 40em) {
+	body {
+		font-size: 1.2rem;
+	}
+	
+	h1 {
+		font-size: 3.5rem;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+section {
+	padding: 5rem 0;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+  align-items: center;
+}
+
+
+/* Header */
+header {
+  position: fixed;
+  width: 100%;
+  padding: 0 max(1rem, 3vw);
+  font-weight: 700;
+  background-color: var(--headerBg);
+  color: var(--headerText);
+}
+
+[data-theme="raspberry"]  {
+  --headerText: var(--raspberry);
+  --headerBg: var(--vanilla);
+}
+
+[data-theme="mint"] {
+  --headerText: var(--mint);
+  --headerBg: var(--chocolate);
+}
+
+[data-theme="vanilla"] {
+  --headerText: var(--vanilla);
+  --headerBg: var(--chocolate);
+}
+
+[data-theme="chocolate"]  {
+  --headerText: var(--chocolate);
+  --headerBg: var(--vanilla);
+}
+
+
+/* Header marker*/
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0.4rem;
+  background-color: currentColor;
+  width: var(--markerWidth, 0);
+  transform: translate3d(var(--markerLeft, 0), 0, 0);
+  transition: transform 250ms, width 200ms, background-color 200ms;
+  will-change: width;
+}
+
+
+/* Sections */
+[data-section="raspberry"] {
+  background-color: var(--raspberry);
+  color: var(--vanilla);
+}
+
+[data-section="mint"]  {
+  background-color: var(--mint);
+  color: var(--chocolate);
+}
+
+[data-section="vanilla"] {
+  background-color: var(--vanilla);
+  color: var(--chocolate);
+}
+
+[data-section="chocolate"] {
+  background-color: var(--chocolate);
+  color: var(--vanilla);
+}
+
+
+/* Layout stuff */
+.section-img {
+	max-width: 12rem;
+	margin: 0 auto;
+}
+
+@media (min-width: 40em) {
+	.section-img {
+		max-width: none;
+	}
+}
+
+section:last-child .section-img {
+	max-width: 10rem;
+}
+
+.container {
+	max-width: 60rem;
+	padding: 0 min(2rem, 5vw);
+}
+
+@media (min-width: 40rem) {
+	.grid {
+		display: grid;
+		align-items: center;
+		grid-template-columns: 1fr 2fr;
+		gap: 3rem;
+	}
+}
+
+.header-nav {
+	display: flex;
+	align-items: center;
+}
+
+.header-list {
+	display: none;
+	margin-left: auto;
+}
+
+@media (min-width: 40rem) {
+	.header-list {
+		display: flex;
+	}
+}
+
+.header-list a {
+	display: block;
+	padding: 1rem;
+}
